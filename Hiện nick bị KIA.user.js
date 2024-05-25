@@ -5,6 +5,7 @@
 // @description  như tên
 // @author       You
 // @match        https://voz.vn/t/*
+// @match        https://voz.vn/conversations/*
 // @grant        none
 // @run-at       document-start
 // @antifeature  tracking
