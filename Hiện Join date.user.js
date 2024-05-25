@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Hiện Join date
 // @namespace    idmresettrial
-// @version      2022.01.17.01
+// @version      2024.05.25.01
 // @description  như tên
 // @author       You
 // @match        https://voz.vn/t/*
@@ -70,7 +70,7 @@ window.addEventListener('DOMContentLoaded', function () {
             let userBanners = parent.querySelectorAll(".userBanner");
 
             jdEl = jdEl.replace("{br}", (userBanners.length >= 2)? "<br/>" : "");
-            parent.querySelector("[itemProp=jobTitle]").insertAdjacentHTML('afterend', jdEl);
+            parent.querySelector(".userTitle").insertAdjacentHTML('afterend', jdEl);
         });
 
         done.push(id);
