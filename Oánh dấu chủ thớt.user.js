@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Oánh dấu chủ thớt
 // @namespace    idmresettrial
-// @version      2022.01.17.01
+// @version      2024.05.25.01
 // @description  như tên
 // @author       You
 // @match        https://voz.vn/t/*
