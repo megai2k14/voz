@@ -9,7 +9,6 @@
 // @grant        GM_setValue
 // @grant        GM_getValue
 // @run-at       document-start
-// @antifeature  tracking
 // ==/UserScript==
 
 window.addEventListener('DOMContentLoaded', function () {

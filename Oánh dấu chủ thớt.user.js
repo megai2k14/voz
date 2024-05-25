@@ -7,7 +7,6 @@
 // @match        https://voz.vn/t/*
 // @grant        none
 // @run-at       document-start
-// @antifeature  tracking
 // ==/UserScript==
 
 window.addEventListener('DOMContentLoaded', function () {

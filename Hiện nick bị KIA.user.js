@@ -8,7 +8,6 @@
 // @match        https://voz.vn/conversations/*
 // @grant        none
 // @run-at       document-start
-// @antifeature  tracking
 // ==/UserScript==
 
 window.addEventListener('DOMContentLoaded', function () {
