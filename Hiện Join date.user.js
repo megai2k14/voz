@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Hiện Join date
 // @namespace    idmresettrial
-// @version      2024.05.25.04
+// @version      2024.05.26.01
 // @description  như tên
 // @author       You
 // @match        https://voz.vn/t/*
@@ -32,13 +32,10 @@ window.addEventListener('DOMContentLoaded', function () {
         }
 
         let token = ""; //document.getElementsByName("_xfToken")[0].value;
-        let queryUrl = "https://voz.vn/u/{username}.{id}/?tooltip=true&_xfRequestUri={requestUri}&_xfWithData=1&_xfToken={token}&_xfResponseType=json";
-        let username = document.querySelector(".message-userDetails a.username[data-user-id='" + id + "']").innerText;
-        queryUrl = queryUrl
-            .replace("{username}", encodeURIComponent(username))
-            .replace("{id}", id)
-            .replace("{requestUri}", document.location.pathname)
-            .replace("{token}", token);
+        let username = document.querySelector(`.message-userDetails a.username[data-user-id="${id}"]`).innerText;
+        let requestUri = document.location.pathname;
+
+        let queryUrl = `https://voz.vn/u/${encodeURIComponent(username)}.${id}/?tooltip=true&_xfRequestUri=${requestUri}&_xfWithData=1&_xfToken=${token}&_xfResponseType=json`;
 
         let httpRequest = new XMLHttpRequest();
         httpRequest.onreadystatechange = function() {
@@ -61,17 +58,17 @@ window.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-        let els = document.querySelectorAll(".message-userDetails a.username[data-user-id='" + id + "']");
+        let els = document.querySelectorAll(`.message-userDetails a.username[data-user-id="${id}"]`);
         els.forEach(el => {
             let jd = new Date(cachedIds[id]*1000)
             jd = jd.toLocaleDateString("vi-VN") + (jd < warningDate ? "" : " *");
 
-            let jdEl = ('<h5 class="message-userTitle joindate" dir="auto" itemprop="joindate">Joined: {jd}</h5>{br}')
-            .replace("{jd}", jd);
             let parent = el.parentElement.parentElement;
             let userBanners = parent.querySelectorAll(".userBanner");
+            let br = (userBanners.length >= 2)? "<br/>" : "";
 
-            jdEl = jdEl.replace("{br}", (userBanners.length >= 2)? "<br/>" : "");
+            let jdEl = `<h5 class="message-userTitle joindate" dir="auto" itemprop="joindate">Joined: ${jd}</h5>${br}`;
+
             parent.querySelector(".userTitle").insertAdjacentHTML('afterend', jdEl);
         });
 

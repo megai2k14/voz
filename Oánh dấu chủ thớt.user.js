@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Oánh dấu chủ thớt
 // @namespace    idmresettrial
-// @version      2024.05.25.02
+// @version      2024.05.26.01
 // @description  như tên
 // @author       You
 // @match        https://voz.vn/t/*
@@ -19,7 +19,7 @@ window.addEventListener('DOMContentLoaded', function () {
         return;
     }
 
-    var starters = document.querySelectorAll(".message-userDetails a.username[data-user-id='" + starterId.getAttribute("data-user-id") + "']");
+    var starters = document.querySelectorAll(`.message-userDetails a.username[data-user-id="${starterId.getAttribute("data-user-id")}"]`);
     if (!starters) {
         return;
     }
