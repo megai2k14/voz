@@ -8,6 +8,8 @@
 // @match        https://voz.vn/conversations/*
 // @grant        none
 // @run-at       document-start
+// @updateURL    https://github.com/megai2k14/voz/raw/master/Hi%E1%BB%87n%20nick%20b%E1%BB%8B%20KIA.user.js
+// @downloadURL  https://github.com/megai2k14/voz/raw/master/Hi%E1%BB%87n%20nick%20b%E1%BB%8B%20KIA.user.js
 // ==/UserScript==
 
 window.addEventListener('DOMContentLoaded', function () {
