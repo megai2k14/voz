@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Hiện nick bị KIA
 // @namespace    idmresettrial
-// @version      2024.05.25.02
+// @version      2024.05.26.01
 // @description  như tên
 // @author       You
 // @match        https://voz.vn/t/*
@@ -16,7 +16,7 @@ window.addEventListener('DOMContentLoaded', function () {
     'use strict';
 
     function findUser(id) {
-        let token = document.getElementsByName("_xfToken")[0].value;
+        let token = ""; //document.getElementsByName("_xfToken")[0].value;
         let queryUrl = "https://voz.vn/index.php?members/find&q={username}&_xfRequestUri={requestUri}&_xfWithData=1&_xfToken={token}&_xfResponseType=json";
         let username = document.querySelector(".message-userDetails a.username[data-user-id='" + id + "']").innerText;
         queryUrl = queryUrl.replace("{username}", encodeURIComponent(username))
