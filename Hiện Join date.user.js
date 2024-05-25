@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Hiện Join date
 // @namespace    idmresettrial
-// @version      2024.05.25.03
+// @version      2024.05.25.04
 // @description  như tên
 // @author       You
 // @match        https://voz.vn/t/*
@@ -31,7 +31,7 @@ window.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-        let token = document.getElementsByName("_xfToken")[0].value;
+        let token = ""; //document.getElementsByName("_xfToken")[0].value;
         let queryUrl = "https://voz.vn/u/{username}.{id}/?tooltip=true&_xfRequestUri={requestUri}&_xfWithData=1&_xfToken={token}&_xfResponseType=json";
         let username = document.querySelector(".message-userDetails a.username[data-user-id='" + id + "']").innerText;
         queryUrl = queryUrl
