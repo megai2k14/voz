@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Hiện Join date
 // @namespace    idmresettrial
-// @version      2024.05.25.02
+// @version      2024.05.25.03
 // @description  như tên
 // @author       You
 // @match        https://voz.vn/t/*
