@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Hiện Join date
 // @namespace    idmresettrial
-// @version      2024.05.26.01
+// @version      2024.05.26.02
 // @description  như tên
 // @author       You
 // @match        https://voz.vn/t/*
@@ -9,8 +9,6 @@
 // @grant        GM_setValue
 // @grant        GM_getValue
 // @run-at       document-start
-// @updateURL    https://github.com/megai2k14/voz/raw/master/Hi%E1%BB%87n%20Join%20date.user.js
-// @downloadURL  https://github.com/megai2k14/voz/raw/master/Hi%E1%BB%87n%20Join%20date.user.js
 // ==/UserScript==
 
 window.addEventListener('DOMContentLoaded', function () {

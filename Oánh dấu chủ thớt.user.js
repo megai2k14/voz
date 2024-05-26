@@ -1,14 +1,12 @@
 // ==UserScript==
 // @name         Oánh dấu chủ thớt
 // @namespace    idmresettrial
-// @version      2024.05.26.01
+// @version      2024.05.26.02
 // @description  như tên
 // @author       You
 // @match        https://voz.vn/t/*
 // @grant        none
 // @run-at       document-start
-// @updateURL    https://github.com/megai2k14/voz/raw/master/O%C3%A1nh%20d%E1%BA%A5u%20ch%E1%BB%A7%20th%E1%BB%9Bt.user.js
-// @downloadURL  https://github.com/megai2k14/voz/raw/master/O%C3%A1nh%20d%E1%BA%A5u%20ch%E1%BB%A7%20th%E1%BB%9Bt.user.js
 // ==/UserScript==
 
 window.addEventListener('DOMContentLoaded', function () {
