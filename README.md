@@ -1,5 +1,5 @@
 ### Thành quả:
-![image](https://github.com/megai2k14/voz/assets/166976878/7d39d920-e53f-4554-b921-8619f5d7d328)
+![image](https://github.com/megai2k14/voz/assets/166976878/33b42724-662b-4dbb-935c-fd3f2c0928d7)
 
 ## Hướng dẫn:
 
