@@ -1,5 +1,5 @@
 ### Thành quả:
-![image](https://github.com/megai2k14/voz/assets/166976878/ad0b4d1f-3997-48c5-9357-b17882479704)
+![image](https://github.com/megai2k14/voz/assets/166976878/7d39d920-e53f-4554-b921-8619f5d7d328)
 
 ## Hướng dẫn:
 
@@ -11,5 +11,6 @@
   - [Hiện Join date](https://github.com/megai2k14/voz/raw/master/Hi%E1%BB%87n%20Join%20date.user.js)
   - [Hiện chủ thớt](https://github.com/megai2k14/voz/raw/master/O%C3%A1nh%20d%E1%BA%A5u%20ch%E1%BB%A7%20th%E1%BB%9Bt.user.js)
   - [Hiện nick bị KIA](https://github.com/megai2k14/voz/raw/master/Hi%E1%BB%87n%20nick%20b%E1%BB%8B%20KIA.user.js)
-
-  
+  - [Thêm phím tắt](https://github.com/megai2k14/voz/raw/master/Th%C3%AAm%20ph%C3%ADm%20t%E1%BA%AFt%20cho%20vOz.user.js)
+    - b/n: chuyển trang
+    - 0: về forum của thread đang xem. (đồng thời thêm nút trên thanh vOz)
