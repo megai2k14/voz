@@ -13,4 +13,6 @@
   - [Hiện nick bị KIA](https://github.com/megai2k14/voz/raw/master/Hi%E1%BB%87n%20nick%20b%E1%BB%8B%20KIA.user.js)
   - [Thêm phím tắt](https://github.com/megai2k14/voz/raw/master/Th%C3%AAm%20ph%C3%ADm%20t%E1%BA%AFt%20cho%20vOz.user.js)
     - b/n: chuyển trang
-    - 0: về forum của thread đang xem. (đồng thời thêm nút trên thanh vOz)
+    - 3: về forum của thread đang xem. (đồng thời thêm nút trên thanh vOz)
+    - 4: reply
+    - click thanh navigation: cuộn về đầu trang
