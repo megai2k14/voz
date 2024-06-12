@@ -16,3 +16,4 @@
     - 3: về forum của thread đang xem. (đồng thời thêm nút trên thanh vOz)
     - 4: reply
     - click thanh navigation: cuộn về đầu trang
+  - [Fix ảnh lỗi](https://github.com/megai2k14/voz/raw/master/Fix%20%E1%BA%A3nh%20l%E1%BB%97i.user.js)
