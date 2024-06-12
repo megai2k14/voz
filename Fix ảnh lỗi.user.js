@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Fix ảnh lỗi
 // @namespace    idmresettrial
-// @version      2024.06.12.01
+// @version      2024.06.12.02
 // @description  như tên
 // @author       You
 // @match        https://voz.vn/*
@@ -14,19 +14,34 @@ window.addEventListener('DOMContentLoaded', function () {
     'use strict';
 
     function replaceBrokenAvatar(el) {
+        if (!el.parentElement) {
+            // fixed
+            return;
+        }
         let parent = el.parentElement;
         parent.classList.add('avatar--default', 'avatar--default--dynamic');
         parent.setAttribute('style', 'background-image: linear-gradient(to right bottom, #264653, #3f557c, #835a91, #c6597f, #e76f51); color: #f1faee');
         parent.innerHTML = `<span class="${el.getAttribute('class')}" role="img" aria-label="${el.getAttribute('alt')}">${el.getAttribute('alt').substring(0,1)}</span>`;
     }
 
+    function inoHandler(entries, observer) {
+        entries.forEach(entry => {
+            let img = entry.target;
+            setTimeout(function() {
+                if (img.complete) {
+                    if (img.naturalWidth == 0) {
+                        replaceBrokenAvatar(img);
+                    }
+                    observer.unobserve(img);
+                }
+            }, 1000);
+        });
+    }
+
     // broken avatars
+    let observer = new IntersectionObserver(inoHandler);
     let avatars = document.querySelectorAll('.avatar img');
-    avatars.forEach(el => {
-        if (el.naturalWidth == 0) {
-            replaceBrokenAvatar(el);
-        }
-    });
+    avatars.forEach(avatar => observer.observe(avatar));
 
     // broken emojis
     let style = document.createElement('style');
