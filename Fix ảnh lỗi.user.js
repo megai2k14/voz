@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Fix ảnh lỗi
 // @namespace    idmresettrial
-// @version      2024.06.14.01
+// @version      2024.06.14.02
 // @description  như tên
 // @author       You
 // @match        https://voz.vn/*
@@ -27,7 +27,7 @@ window.addEventListener('DOMContentLoaded', function () {
             return;
         }
 
-        const currentSize = avatar.src.match(/\/avatars\/(.+?)\//)?.[1];
+        const currentSize = avatar.currentSrc.match(/\/avatars\/(.+?)\//)?.[1];
         if (!currentSize) {
             replaceBrokenAvatar(avatar);
             return;
@@ -48,6 +48,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
         if (newSize) {
             avatar.src = avatar.src.replace(`/avatars/${currentSize}/`, `/avatars/${newSize}/`);
+            avatar.srcset = avatar.srcset.replace(`/avatars/${currentSize}/`, `/avatars/${newSize}/`);
         } else {
             replaceBrokenAvatar(avatar);
         }
@@ -60,6 +61,7 @@ window.addEventListener('DOMContentLoaded', function () {
     avatars.forEach(avatar => {
         if (avatar.complete && !avatar.naturalWidth) {
             avatar.src = avatar.src;
+            avatar.srcset = avatar.srcset;
         }
     });
 
