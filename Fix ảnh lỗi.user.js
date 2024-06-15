@@ -1,13 +1,12 @@
 // ==UserScript==
 // @name         Fix ảnh lỗi
 // @namespace    idmresettrial
-// @version      2024.06.15.01
+// @version      2024.06.15.02
 // @description  như tên
 // @author       You
 // @match        https://voz.vn/*
 // @grant        GM_setValue
 // @grant        GM_getValue
-// @require      https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js
 // @run-at       document-start
 // ==/UserScript==
 
@@ -40,14 +39,13 @@ window.addEventListener('DOMContentLoaded', function () {
                 return;
             }
 
-            let brokenSrcs = img.dataset.brokenSrcs?.split(';') || Cookies.get(`${userId}-brokenSrcs`)?.split(';') || [];
+            let brokenSrcs = img.dataset.brokenSrcs?.split(';') || cachedData.getBrokenSrcs(userId) || [];
             if (!brokenSrcs.includes(currentSize)) {
                 brokenSrcs.push(currentSize);
             }
             img.dataset.brokenSrcs = brokenSrcs.join(';');
             // cache in 1 hour
-            Cookies.set(`${userId}-brokenSrcs`, img.dataset.brokenSrcs, {expires: 1/24});
-
+            cachedData.setBrokenSrcs(userId, brokenSrcs, 3600*1000);
             let srcSet = ['s', 'm', 'l', 'o'];
             // sort to get the best quality
             const currentSizeIndex = srcSet.indexOf(currentSize);
@@ -70,7 +68,45 @@ window.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    let Cookies = window.Cookies;
+    let cachedData = {
+        data: GM_getValue('cachedData', {}),
+        getBrokenSrcs: function(userId) {
+            if (userId && this.data[userId]?.expires > Date.now()) {
+                return this.data[userId].brokenSrcs;
+            } else if (userId && this.data[userId]?.expires <= Date.now()) {
+                delete this.data[userId];
+            }
+            return undefined;
+        },
+        setBrokenSrcs: function(userId, brokenSrcs, miliseconds) {
+            if (userId) {
+                this.data[userId] = {'brokenSrcs': brokenSrcs, 'expires': Date.now() + miliseconds};
+            }
+        },
+        save: function() {
+            GM_setValue('cachedData', this.data);
+        },
+        flush: function() {
+            if (Date.now() - GM_getValue('lastFlush', 0) > 86400*1000) {
+                let count = 0;
+                for (const userId of Object.keys(this.data)) {
+                    if (Date.now() > this.data[userId].expires) {
+                        delete this.data[userId];
+                        count++;
+                    }
+                    if (count == 10) {
+                        break;
+                    }
+                }
+                GM_setValue('lastFlush', Date.now());
+            }
+        }
+    };
+    window.addEventListener("beforeunload", function() {
+        cachedData.flush();
+        cachedData.save();
+    });
+
     // broken imgs
     document.addEventListener('error', imgErrorHandler, true);
     // reload cached imgs to get events
