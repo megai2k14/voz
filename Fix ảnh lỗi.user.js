@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Fix ảnh lỗi
 // @namespace    idmresettrial
-// @version      2024.06.15.02
+// @version      2024.06.15.03
 // @description  như tên
 // @author       You
 // @match        https://voz.vn/*
@@ -46,7 +46,7 @@ window.addEventListener('DOMContentLoaded', function () {
             img.dataset.brokenSrcs = brokenSrcs.join(';');
             // cache in 1 hour
             cachedData.setBrokenSrcs(userId, brokenSrcs, 3600*1000);
-            let srcSet = ['s', 'm', 'l', 'o'];
+            let srcSet = ['s', 'm', 'l', 'h', 'o'];
             // sort to get the best quality
             const currentSizeIndex = srcSet.indexOf(currentSize);
             if (currentSizeIndex > 0) {
