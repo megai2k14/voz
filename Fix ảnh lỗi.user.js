@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Fix ảnh lỗi
 // @namespace    idmresettrial
-// @version      2024.06.15.03
+// @version      2024.06.15.04
 // @description  như tên
 // @author       You
 // @match        https://voz.vn/*
@@ -94,7 +94,7 @@ window.addEventListener('DOMContentLoaded', function () {
                         delete this.data[userId];
                         count++;
                     }
-                    if (count == 10) {
+                    if (count == 100) {
                         break;
                     }
                 }
