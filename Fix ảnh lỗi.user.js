@@ -1,12 +1,13 @@
 // ==UserScript==
 // @name         Fix ảnh lỗi
 // @namespace    idmresettrial
-// @version      2024.06.14.03
+// @version      2024.06.15.01
 // @description  như tên
 // @author       You
 // @match        https://voz.vn/*
 // @grant        GM_setValue
 // @grant        GM_getValue
+// @require      https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js
 // @run-at       document-start
 // ==/UserScript==
 
@@ -32,15 +33,20 @@ window.addEventListener('DOMContentLoaded', function () {
         }
 
         if (imgClass == 'avatar') {
+            const userId = img.parentElement.dataset.userId;
             const currentSize = img.currentSrc.match(/\/avatars\/(.+?)\//)?.[1];
             if (!currentSize) {
                 replaceBrokenAvatar(img);
                 return;
             }
 
-            let brokenSrcs = img.dataset.brokenSrcs?.split(';') || [];
-            brokenSrcs.push(currentSize);
+            let brokenSrcs = img.dataset.brokenSrcs?.split(';') || Cookies.get(`${userId}-brokenSrcs`)?.split(';') || [];
+            if (!brokenSrcs.includes(currentSize)) {
+                brokenSrcs.push(currentSize);
+            }
             img.dataset.brokenSrcs = brokenSrcs.join(';');
+            // cache in 1 hour
+            Cookies.set(`${userId}-brokenSrcs`, img.dataset.brokenSrcs, {expires: 1/24});
 
             let srcSet = ['s', 'm', 'l', 'o'];
             // sort to get the best quality
@@ -49,9 +55,8 @@ window.addEventListener('DOMContentLoaded', function () {
                 srcSet = [...srcSet.slice(currentSizeIndex, srcSet.length), ...srcSet.slice(0, currentSizeIndex).reverse()];
             }
 
-            const newSize = srcSet.find(size => !brokenSrcs.includes(size));
-
-            if (newSize) {
+            const newSize = srcSet.find(size => !brokenSrcs.includes(size)) || 'null';
+            if (srcSet.includes(newSize)) {
                 img.src = img.src.replaceAll(`/avatars/${currentSize}/`, `/avatars/${newSize}/`);
                 img.srcset = img.srcset.replaceAll(`/avatars/${currentSize}/`, `/avatars/${newSize}/`);
             } else {
@@ -65,6 +70,7 @@ window.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    let Cookies = window.Cookies;
     // broken imgs
     document.addEventListener('error', imgErrorHandler, true);
     // reload cached imgs to get events
