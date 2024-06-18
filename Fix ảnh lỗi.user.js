@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Fix ảnh lỗi
 // @namespace    idmresettrial
-// @version      2024.06.18.01
+// @version      2024.06.18.02
 // @description  như tên
 // @author       You
 // @match        https://voz.vn/*
@@ -11,7 +11,7 @@
 // @run-at       document-start
 // ==/UserScript==
 
-const CACHE_SIZE = 100;
+const CACHE_SIZE = 1000;
 const CACHE_TIME = 43200;
 
 GM_addStyle(`
