@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Fix ảnh lỗi
 // @namespace    idmresettrial
-// @version      2024.06.19.01
+// @version      2024.06.19.02
 // @description  như tên
 // @author       You
 // @match        https://voz.vn/*
@@ -20,8 +20,11 @@ const AVATARS = [
     'background-image: url(https://cdn.save.moe/e/WP22oQ.jpeg); background-size: cover; color: #0000;',
     'background-image: url(https://cdn.save.moe/c/B4ark.md.jpeg); background-size: cover; color: #0000;',
     'background-image: url(https://cdn.save.moe/e/WPxFIv.md.jpeg); background-size: cover; color: #0000;',
-    'background-image: url(https://i.imgur.com/k2T2CcK.png); background-size: cover; color: #0000;',
-    'background-image: url(https://cdn.save.moe/c/KBuRo.jpeg); background-size: cover; color: #0000;',
+    'background-image: url(https://i.imgur.com/FTmMQRf.png); background-size: cover; color: #0000;',
+    'background-image: url(https://i.imgur.com/I93utGv.png); background-size: cover; color: #0000;',
+    'background-image: url(https://i.imgur.com/AkFC8my.png); background-size: cover; color: #0000;',
+    'background-image: url(https://i.imgur.com/TnWWxTz.png); background-size: cover; color: #0000;',
+    'background-image: url(https://i.imgur.com/7fuutlQ.png); background-size: cover; color: #0000;',
 ].map((element, index) => `.avatar.avatar--broken-${index} {${element}}`);
 GM_addStyle(AVATARS.join(' '));
 
@@ -37,7 +40,7 @@ function getImgClass(img) {
 }
 
 function replaceBrokenAvatar(img) {
-    const styleClass = 'avatar--broken-' + (img.alt.charCodeAt(0) + img.alt.charCodeAt(img.alt.length - 1) + img.alt.length) % AVATARS.length;
+    const styleClass = 'avatar--broken-' + (img.parentElement.dataset.userId % AVATARS.length);
     const parent = img.parentElement;
     parent.classList.add('avatar--default', 'avatar--default--dynamic', styleClass);
 
