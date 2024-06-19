@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Fix ảnh lỗi
 // @namespace    idmresettrial
-// @version      2024.06.18.02
+// @version      2024.06.19.01
 // @description  như tên
 // @author       You
 // @match        https://voz.vn/*
@@ -14,11 +14,16 @@
 const CACHE_SIZE = 1000;
 const CACHE_TIME = 43200;
 
-GM_addStyle(`
-  .avatar.avatar--broken {
-      background-image: linear-gradient(to right bottom, #264653, #3f557c, #835a91, #c6597f, #e76f51); color: #f1faee;
-  }
-`);
+const AVATARS = [
+    'background-image: linear-gradient(to right bottom, #264653, #3f557c, #835a91, #c6597f, #e76f51); color: #f1faee;',
+    'background-image: url(https://cdn.save.moe/e/WP3q8B.jpeg); background-size: cover; color: #0000;',
+    'background-image: url(https://cdn.save.moe/e/WP22oQ.jpeg); background-size: cover; color: #0000;',
+    'background-image: url(https://cdn.save.moe/c/B4ark.md.jpeg); background-size: cover; color: #0000;',
+    'background-image: url(https://cdn.save.moe/e/WPxFIv.md.jpeg); background-size: cover; color: #0000;',
+    'background-image: url(https://i.imgur.com/k2T2CcK.png); background-size: cover; color: #0000;',
+    'background-image: url(https://cdn.save.moe/c/KBuRo.jpeg); background-size: cover; color: #0000;',
+].map((element, index) => `.avatar.avatar--broken-${index} {${element}}`);
+GM_addStyle(AVATARS.join(' '));
 
 function getImgClass(img) {
     const supportedClasses = ['smilie', 'reaction-image', 'avatar'];
@@ -31,16 +36,19 @@ function getImgClass(img) {
     return undefined;
 }
 
-function replaceBrokenAvatar(el) {
-    let parent = el.parentElement;
-    parent.classList.add('avatar--default', 'avatar--default--dynamic', 'avatar--broken');
+function replaceBrokenAvatar(img) {
+    const styleClass = 'avatar--broken-' + (img.alt.charCodeAt(0) + img.alt.charCodeAt(img.alt.length - 1) + img.alt.length) % AVATARS.length;
+    const parent = img.parentElement;
+    parent.classList.add('avatar--default', 'avatar--default--dynamic', styleClass);
 
-    let newAvatar = document.createElement('span');
-    newAvatar.class = el.getAttribute('class');
-    newAvatar.role = 'img';
-    newAvatar['aria-label'] = el.alt;
-    newAvatar.innerHTML = el.getAttribute('alt').substring(0,1);
-    el.replaceWith(newAvatar);
+    const newAvatar = document.createElement('span');
+    Object.assign(newAvatar, {
+        'class': img.getAttribute('class'),
+        'role': 'img',
+        'aria-label': img.alt,
+        'innerHTML': img.getAttribute('alt').substring(0,1)
+    });
+    img.replaceWith(newAvatar);
 }
 
 function imgErrorHandler(event) {
