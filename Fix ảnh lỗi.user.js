@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Fix ảnh lỗi
 // @namespace    idmresettrial
-// @version      2024.06.19.02
+// @version      2024.06.21.01
 // @description  như tên
 // @author       You
 // @match        https://voz.vn/*
@@ -130,3 +130,13 @@ window.addEventListener("beforeunload", function() {
 });
 
 window.addEventListener('error', imgErrorHandler, true);
+// broken proxy
+window.addEventListener('load', function() {
+    const proxiedImgs = [...document.querySelectorAll('img[src^="/proxy.php"]')].filter(img => img.naturalWidth <= 32);
+    if (proxiedImgs) {
+        for (const img of proxiedImgs) {
+            img.src = img.dataset.url;
+            img.classList.add("unproxied-image");
+        }
+    }
+});
