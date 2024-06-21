@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Fix ảnh lỗi
 // @namespace    idmresettrial
-// @version      2024.06.21.01
+// @version      2024.06.21.02
 // @description  như tên
 // @author       You
 // @match        https://voz.vn/*
@@ -27,6 +27,8 @@ const AVATARS = [
     'background-image: url(https://i.imgur.com/7fuutlQ.png); background-size: cover; color: #0000;',
 ].map((element, index) => `.avatar.avatar--broken-${index} {${element}}`);
 GM_addStyle(AVATARS.join(' '));
+
+GM_addStyle('.unproxied-image {border-radius: 10px;}');
 
 function getImgClass(img) {
     const supportedClasses = ['smilie', 'reaction-image', 'avatar'];
@@ -131,12 +133,12 @@ window.addEventListener("beforeunload", function() {
 
 window.addEventListener('error', imgErrorHandler, true);
 // broken proxy
-window.addEventListener('load', function() {
-    const proxiedImgs = [...document.querySelectorAll('img[src^="/proxy.php"]')].filter(img => img.naturalWidth <= 32);
-    if (proxiedImgs) {
-        for (const img of proxiedImgs) {
-            img.src = img.dataset.url;
-            img.classList.add("unproxied-image");
-        }
+document.addEventListener('load', function(event) {
+    const img = event.target;
+    if (img.tagName != 'IMG' || img.classList.contains('unproxied-image') || img.src.indexOf('https://voz.vn/proxy.php') == -1 || img.naturalWidth > 200) {
+        return;
     }
-});
+    img.src = img.dataset.url;
+    img.parentElement.dataset.src = img.dataset.url;
+    img.classList.add('unproxied-image');
+}, true);
