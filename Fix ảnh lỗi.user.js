@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Fix ảnh lỗi
 // @namespace    idmresettrial
-// @version      2024.06.21.02
+// @version      2024.06.21.03
 // @description  như tên
 // @author       You
 // @match        https://voz.vn/*
@@ -48,9 +48,9 @@ function replaceBrokenAvatar(img) {
 
     const newAvatar = document.createElement('span');
     Object.assign(newAvatar, {
-        'class': img.getAttribute('class'),
+        'className': img.className,
         'role': 'img',
-        'aria-label': img.alt,
+        'ariaLabel': img.alt,
         'innerHTML': img.getAttribute('alt').substring(0,1)
     });
     img.replaceWith(newAvatar);
@@ -138,7 +138,9 @@ document.addEventListener('load', function(event) {
     if (img.tagName != 'IMG' || img.classList.contains('unproxied-image') || img.src.indexOf('https://voz.vn/proxy.php') == -1 || img.naturalWidth > 200) {
         return;
     }
-    img.src = img.dataset.url;
     img.parentElement.dataset.src = img.dataset.url;
-    img.classList.add('unproxied-image');
+    Object.assign(img, {
+        'src': img.dataset.url,
+        'className': img.className + ' unproxied-image'
+    });
 }, true);
