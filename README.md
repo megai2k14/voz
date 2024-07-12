@@ -17,3 +17,7 @@
     - 4: reply
     - click thanh navigation: cuộn về đầu trang
   - [Fix ảnh lỗi](https://github.com/megai2k14/voz/raw/master/Fix%20%E1%BA%A3nh%20l%E1%BB%97i.user.js)
+
+#### Userstyles
+  - [theNextCuteVOZ](https://github.com/megai2k14/voz/raw/master/theNextCuteVOZ.user.css)
+    - thu nhỏ ảnh không cho cao quá màn hình...
