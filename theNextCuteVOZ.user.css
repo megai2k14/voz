@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name       theNextCuteVOZ
 @namespace  idmresettrial
-@version    2024.07.12.01
+@version    2024.07.12.02
 ==/UserStyle== */
 
 @-moz-document domain("voz.vn") {
@@ -149,6 +149,9 @@
 
 @-moz-document url-prefix("https://voz.vn/t/") {
 @media (min-width: 721px) {
+    .bbImageWrapper[data-fancybox] {
+        display: table-cell;
+    }
     .bbImage {
         max-height: 69vh;
         width: auto !important;
