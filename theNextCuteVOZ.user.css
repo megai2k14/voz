@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name       theNextCuteVOZ
 @namespace  idmresettrial
-@version    2024.07.12.02
+@version    2024.07.14.01
 ==/UserStyle== */
 
 @-moz-document domain("voz.vn") {
@@ -20,6 +20,21 @@
     .menu-tabHeader .tabs-tab {
         color: #ebeced8a !important;
     }
+
+@media (prefers-color-scheme: dark) {
+    html, .p-header-content, .p-pageWrapper {
+        background-color: #0000;
+    }
+    .p-nav,
+    .menu-header, .menu-tabHeader, .menu-tabHeader .tabs-tab.is-active, .menu-tabHeader .tabs-tab:hover {
+        background-color: #111 !important;
+    }
+    .block-header {
+        background: none;
+    }
+}
+
+
 
     .block-outer.block-outer--after {
         padding-bottom: 8px !important;
@@ -74,7 +89,7 @@
     }
 }
 
-@-moz-document regexp("https://voz.vn/.+") {
+@-moz-document regexp("https://voz.vn/(?:f|t)/.+") {
     .p-body-sidebar,
     .p-body-sidebarCol {
         display: none !important;
@@ -150,11 +165,17 @@
 @-moz-document url-prefix("https://voz.vn/t/") {
 @media (min-width: 721px) {
     .bbImageWrapper[data-fancybox] {
-        display: table-cell;
+        display: inline-block;
     }
-    .bbImage {
-        max-height: 69vh;
+    .bbImage, .bbImage.lazyloaded:not(:hover) {
+        max-height: 250px !important;
         width: auto !important;
+    }
+    .bbImageWrapper[data-fancybox]:has(+ .bbImageWrapper[data-fancybox]) {
+        padding-right: 5px;
+    }
+    .bbImageWrapper[data-fancybox] + br:has(+ .bbImageWrapper[data-fancybox]) {
+        display: none;
     }
 }
 }
