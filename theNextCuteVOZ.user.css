@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name       theNextCuteVOZ
 @namespace  idmresettrial
-@version    2024.07.14.01
+@version    2024.07.15.01
 ==/UserStyle== */
 
 @-moz-document domain("voz.vn") {
@@ -171,10 +171,16 @@
         max-height: 250px !important;
         width: auto !important;
     }
+    .bbImage[style="width: 100px"] {
+        width: 100px !important;
+    }
     .bbImageWrapper[data-fancybox]:has(+ .bbImageWrapper[data-fancybox]) {
         padding-right: 5px;
     }
-    .bbImageWrapper[data-fancybox] + br:has(+ .bbImageWrapper[data-fancybox]) {
+    .bbImageWrapper[data-fancybox] + br:has(+ .bbImageWrapper[data-fancybox]),
+    .bbImageWrapper[data-fancybox] + br:has(+ br):has(~ .bbImageWrapper[data-fancybox]),
+    .bbImageWrapper[data-fancybox] + br + br:has(+ .bbImageWrapper[data-fancybox])
+    {
         display: none;
     }
 }
