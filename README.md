@@ -3,6 +3,7 @@
 
 ## Hướng dẫn:
 
+###  1. Script
 #### Bước 1. Cài đặt Userscript manager
   - Tampermonkey: https://www.tampermonkey.net/index.php
   - Hoặc có thể dùng Adguard (PC/Android), Greasemonkey, Violentmonkey...
@@ -18,6 +19,11 @@
     - click thanh navigation: cuộn về đầu trang
   - [Fix ảnh lỗi](https://github.com/megai2k14/voz/raw/master/Fix%20%E1%BA%A3nh%20l%E1%BB%97i.user.js)
 
-#### Userstyles
+### 2. Userstyle
+![image](https://github.com/user-attachments/assets/8af45370-de68-4ac1-af77-609ae9bfe2a7)
+
+#### Bước 1. Cài extension Stylus cho trình duyệt
+#### Bước 2. Cài style:
   - [theNextCuteVOZ](https://github.com/megai2k14/voz/raw/master/theNextCuteVOZ.user.css)
-    - thu nhỏ ảnh không cho cao quá màn hình...
+    - thu nhỏ ảnh không cho cao quá màn hình
+    - ...
