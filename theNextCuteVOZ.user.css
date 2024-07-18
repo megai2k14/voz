@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name       theNextCuteVOZ
 @namespace  idmresettrial
-@version    2024.07.15.01
+@version    2024.07.18.01
 ==/UserStyle== */
 
 @-moz-document domain("voz.vn") {
@@ -174,12 +174,18 @@
     .bbImage[style="width: 100px"] {
         width: 100px !important;
     }
-    .bbImageWrapper[data-fancybox]:has(+ .bbImageWrapper[data-fancybox]) {
+    .bbImageWrapper[data-fancybox]:has(+ .bbImageWrapper[data-fancybox]),
+    .bbImageWrapper[data-fancybox]:has(+ br + .bbImageWrapper[data-fancybox]),
+    .bbImageWrapper[data-fancybox]:has(+ br + br + .bbImageWrapper[data-fancybox])
+    {
         padding-right: 5px;
     }
     .bbImageWrapper[data-fancybox] + br:has(+ .bbImageWrapper[data-fancybox]),
-    .bbImageWrapper[data-fancybox] + br:has(+ br):has(~ .bbImageWrapper[data-fancybox]),
-    .bbImageWrapper[data-fancybox] + br + br:has(+ .bbImageWrapper[data-fancybox])
+    .bbImageWrapper[data-fancybox] + br:has(+ br + .bbImageWrapper[data-fancybox]),
+    .bbImageWrapper[data-fancybox] + br + br:has(+ .bbImageWrapper[data-fancybox]),
+    a:has(> img) + br:has(+ a > img),
+    a:has(> img) + br:has(+ br + a > img),
+    a:has(> img) + br + br:has(+ a > img)
     {
         display: none;
     }
