@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Fix ảnh lỗi
 // @namespace    idmresettrial
-// @version      2024.06.21.03
+// @version      2024.07.24.01
 // @description  như tên
 // @author       You
 // @match        https://voz.vn/*
@@ -12,7 +12,7 @@
 // ==/UserScript==
 
 const CACHE_SIZE = 1000;
-const CACHE_TIME = 43200;
+const CACHE_TIME = 3600000;
 
 const AVATARS = [
     'background-image: linear-gradient(to right bottom, #264653, #3f557c, #835a91, #c6597f, #e76f51); color: #f1faee;',
@@ -25,6 +25,10 @@ const AVATARS = [
     'background-image: url(https://i.imgur.com/AkFC8my.png); background-size: cover; color: #0000;',
     'background-image: url(https://i.imgur.com/TnWWxTz.png); background-size: cover; color: #0000;',
     'background-image: url(https://i.imgur.com/7fuutlQ.png); background-size: cover; color: #0000;',
+    'background-image: url(https://i.imgur.com/XbE83wP.png); background-size: cover; color: #0000;',
+    'background-image: url(https://i.imgur.com/zh2F4du.png); background-size: cover; color: #0000;',
+    'background-image: url(https://i.imgur.com/sTlMHE6.png); background-size: cover; color: #0000;',
+    'background-image: url(https://i.imgur.com/Lkrrrbj.png); background-size: cover; color: #0000;',
 ].map((element, index) => `.avatar.avatar--broken-${index} {${element}}`);
 GM_addStyle(AVATARS.join(' '));
 
@@ -123,11 +127,22 @@ let cachedData = {
             this.data = [];
         }
         GM_setValue('cachedData', this.data.slice(-CACHE_SIZE));
+    },
+    flush: function() {
+        if (Date.now() - GM_getValue('lastFlush', 0) > 86400000) {
+            for (let i = 0; i < Math.min(this.data.length, 100); i++) {
+                if (Date.now() > this.data[i].expires) {
+                    this.data.splice(i, 1);
+                }
+            }
+            GM_setValue('lastFlush', Date.now());
+        }
     }
 };
 
 // save cached data
 window.addEventListener("beforeunload", function() {
+    cachedData.flush();
     cachedData.save();
 });
 
