@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name       theNextCuteVOZ
 @namespace  idmresettrial
-@version    2024.07.24.01
+@version    2024.07.25.01
 ==/UserStyle== */
 
 @-moz-document domain("voz.vn") {
@@ -89,8 +89,8 @@
     }
 
     .userBanner.userBanner--green {
-        background: #399918;
-        border-color: #399918;
+        background: #606676;
+        border-color: #828282;
     }
 }
 
