@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Fix ảnh lỗi
 // @namespace    idmresettrial
-// @version      2024.07.24.01
+// @version      2024.08.13.01
 // @description  như tên
 // @author       You
 // @match        https://voz.vn/*
@@ -130,11 +130,13 @@ let cachedData = {
     },
     flush: function() {
         if (Date.now() - GM_getValue('lastFlush', 0) > 86400000) {
+            let expires = [];
             for (let i = 0; i < Math.min(this.data.length, 100); i++) {
                 if (Date.now() > this.data[i].expires) {
-                    this.data.splice(i, 1);
+                    expires.unshift(i);
                 }
             }
+            expires.forEach(i => this.data.splice(i, 1));
             GM_setValue('lastFlush', Date.now());
         }
     }
