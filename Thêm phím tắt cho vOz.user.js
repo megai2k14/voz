@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Thêm phím tắt cho vOz
 // @namespace    idmresettrial
-// @version      2024.05.31.01
+// @version      2024.10.11.01
 // @description  ... dùng phím tắt đôi khi tiện hơn dùng chuột
 // @author       You
 // @match        https://voz.vn/*
@@ -30,12 +30,9 @@ window.addEventListener('DOMContentLoaded', function () {
 
     // Đi đến khung reply
     // phím tắt: 4
-    if (window.location.pathname.match(/^\/[t]\//)) {
+    if (!window.location.pathname.match(/^\/find-threads\/contributed/)) {
         let newBtn = document.createElement("li");
-        newBtn.innerHTML = `<div class="p-navEl">
-        <a id="navReply" href="${window.location.pathname.match(/.*\//)[0]}/reply" class="p-navEl-link button button--icon--reply"
-        data-xf-key="4" data-nav-id="voz_reply" data-xf-click="overlay">Reply</a>
-        </div>`;
+        newBtn.innerHTML = `<div class="p-navEl"><a href="/find-threads/contributed" class="p-navEl-link" data-xf-key="4" data-nav-id="voz_contributedThreads">Thớt đã comment</a></div>`;
         navButtons.appendChild(newBtn);
     }
 

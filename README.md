@@ -15,7 +15,7 @@
   - [Thêm phím tắt](https://github.com/megai2k14/voz/raw/master/Th%C3%AAm%20ph%C3%ADm%20t%E1%BA%AFt%20cho%20vOz.user.js)
     - b/n: chuyển trang
     - 3: về forum của thread đang xem. (đồng thời thêm nút trên thanh vOz)
-    - 4: reply
+    - 4: xem các thớt đã comment. (đồng thời thêm nút trên thanh vOz)
     - click thanh navigation: cuộn về đầu trang
   - [Fix ảnh lỗi](https://github.com/megai2k14/voz/raw/master/Fix%20%E1%BA%A3nh%20l%E1%BB%97i.user.js)
   - [Cảnh báo thớt cũ](https://github.com/megai2k14/voz/raw/refs/heads/master/C%E1%BA%A3nh%20b%C3%A1o%20th%E1%BB%9Bt%20c%C5%A9.user.js)
