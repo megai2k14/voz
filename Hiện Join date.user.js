@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Hiện Join date
 // @namespace    idmresettrial
-// @version      2024.05.26.02
+// @version      2024.11.13.01
 // @description  như tên
 // @author       You
 // @match        https://voz.vn/t/*
@@ -38,7 +38,7 @@ window.addEventListener('DOMContentLoaded', function () {
         let httpRequest = new XMLHttpRequest();
         httpRequest.onreadystatechange = function() {
             if (httpRequest.readyState === XMLHttpRequest.DONE && httpRequest.status === 200) {
-                let joindate = JSON.parse(httpRequest.responseText).html.content.match(/data-time=\"(.*?)\"/);
+                let joindate = JSON.parse(httpRequest.responseText).html.content.match(/data-timestamp=\"(.*?)\"/);
                 if (joindate && !isNaN(Number(joindate[1]))) {
                     cachedIds[id] = Number(joindate[1]);
                     showJd(id);
