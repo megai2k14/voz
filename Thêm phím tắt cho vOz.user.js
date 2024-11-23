@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Thêm phím tắt cho vOz
 // @namespace    idmresettrial
-// @version      2024.11.10.01
+// @version      2024.11.16.01
 // @description  ... dùng phím tắt đôi khi tiện hơn dùng chuột
 // @author       You
 // @match        https://voz.vn/*
@@ -14,18 +14,32 @@ window.addEventListener('DOMContentLoaded', function () {
 
     document.head.insertAdjacentHTML('beforeend', `
         <style type="text/css">
+            .p-navgroup.p-mini {
+                display: none;
+            }
+
             @media (max-width: 727px) {
+                .p-navgroup.p-mini {
+                    display: unset
+                }
+
                 .p-navgroup-link.p-navgroup-link--currentBox i:after,
                 .p-navgroup-link.p-navgroup-link--contributed i:after {
-                    width: 1.28571429em;
-                    display: inline-block;
-                    text-align: center;
-                }
+                     display: inline-block;
+                     content: "";
+                     height: 1em;
+                     vertical-align: -0.125em;
+                     background-color: currentColor;
+                     width: 1.28571429em;
+                 }
                 .p-navgroup-link.p-navgroup-link--currentBox i:after {
-                    content: "\\f104";
+                    mask: url('/styles/fa/regular/angle-left.svg?v=5.15.3') no-repeat center;
+                    -webkit-mask: url('/styles/fa/regular/angle-left.svg?v=5.15.3') no-repeat center
                 }
                 .p-navgroup-link.p-navgroup-link--contributed i:after {
-                    content: "\\f1da";
+                    mask: url('/styles/fa/regular/history.svg?v=5.15.3') no-repeat center;
+                    -webkit-mask: url('/styles/fa/regular/history.svg?v=5.15.3') no-repeat center
+
                 }
             }
         </style>
@@ -39,8 +53,8 @@ window.addEventListener('DOMContentLoaded', function () {
 
     // Hiện link tới box đang xem
     // phím tắt: 3
-    if (window.location.pathname.match(/^\/[tf]\//)) {
-        const currentBox = document.querySelector(".p-breadcrumbs li:last-child a");
+    const currentBox = document.querySelector(".p-breadcrumbs li:last-child a");
+    if (currentBox) {
 
         navButtons.insertAdjacentHTML('beforeend',`
             <li><div class="p-navEl"><a href="${currentBox.href}" class="p-navEl-link" data-xf-key="3"
@@ -48,7 +62,7 @@ window.addEventListener('DOMContentLoaded', function () {
         `);
 
         navOpposite.insertAdjacentHTML('beforeend', `
-            <div class="p-navgroup">
+            <div class="p-navgroup p-mini">
             <a class="p-navgroup-link p-navgroup-link--iconic p-navgroup-link--currentBox"
             href="${currentBox.href}" data-xf-key="3" data-nav-id="voz_currentBox"><i aria-hidden="true"></i></a>
         `);
@@ -56,16 +70,20 @@ window.addEventListener('DOMContentLoaded', function () {
 
     // Hiện link tới những thread đã comment
     // phím tắt: 4
-    if (!window.location.pathname.match(/^\/find-threads\/contributed/)) {
+    {
+        let isSelectedClass = window.location.href == 'https://voz.vn/find-threads/contributed' ? 'is-selected' : '';
+        if (isSelectedClass) {
+            document.querySelector('.p-navEl.is-selected').classList.remove('is-selected');
+        }
         navButtons.insertAdjacentHTML('beforeend', `
-            <li><div class="p-navEl">
+            <li><div class="p-navEl ${isSelectedClass}">
             <a href="/find-threads/contributed" class="p-navEl-link" data-xf-key="4"
             data-nav-id="voz_contributedThreads">Thớt đã comment</a>
             </div></li>
         `);
 
         navOpposite.insertAdjacentHTML('beforeend', `
-            <div class="p-navgroup"><a class="p-navgroup-link p-navgroup-link--iconic p-navgroup-link--contributed"
+            <div class="p-navgroup p-mini"><a class="p-navgroup-link p-navgroup-link--iconic p-navgroup-link--contributed"
             href="/find-threads/contributed" data-xf-key="4" data-nav-id="voz_contributedThreads"><i aria-hidden="true"></i></a></div>
         `);
     }
