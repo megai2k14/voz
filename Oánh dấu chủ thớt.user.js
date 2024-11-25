@@ -1,10 +1,11 @@
 // ==UserScript==
 // @name         Oánh dấu chủ thớt
 // @namespace    idmresettrial
-// @version      2024.05.26.02
+// @version      2024.11.25.01
 // @description  như tên
 // @author       You
 // @match        https://voz.vn/t/*
+// @match        https://voz.vn/direct-messages/*
 // @grant        none
 // @run-at       document-start
 // ==/UserScript==

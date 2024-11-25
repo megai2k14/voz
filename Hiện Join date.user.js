@@ -1,11 +1,11 @@
 // ==UserScript==
 // @name         Hiện Join date
 // @namespace    idmresettrial
-// @version      2024.11.13.01
+// @version      2024.11.25.01
 // @description  như tên
 // @author       You
 // @match        https://voz.vn/t/*
-// @match        https://voz.vn/conversations/*
+// @match        https://voz.vn/direct-messages/*
 // @grant        GM_setValue
 // @grant        GM_getValue
 // @run-at       document-start
