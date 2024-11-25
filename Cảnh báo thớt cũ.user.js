@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Cảnh báo thớt cũ
 // @namespace    idmresettrial
-// @version      2024.10.01.01
+// @version      2024.11.25.01
 // @description  như tên
 // @author       You
 // @match        https://voz.vn/t/*
@@ -40,7 +40,7 @@ window.addEventListener('DOMContentLoaded', async function () {
 
     const threadLastTime = await getThreadLastTime(`${window.location.href}/latest`);
     const isOldThread = Date.now() - threadLastTime > OLD_THRESHOLD;
-    const currentBox = document.querySelector(".p-breadcrumbs li:last-child a").href.match(/\d+/)[0];
+    const currentBox = document.querySelector(".p-breadcrumbs li:last-child a")?.href.match(/\d+/g)?.at(-1);
 
     const btnSubmit = document.querySelectorAll('form.js-quickReply button[type="submit"]')[0];
     if (currentBox == '33' && isOldThread && btnSubmit) {
