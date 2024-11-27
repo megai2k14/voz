@@ -1,40 +1,191 @@
 /* ==UserStyle==
 @name       theNextCuteVOZ
 @namespace  idmresettrial
-@version    2024.07.25.01
+@version    2024.11.27.01
 ==/UserStyle== */
 
 @-moz-document domain("voz.vn") {
     .block--messages .message ~ .message {
-        margin-top: 8px !important;
+        margin-top: 10px !important;
+    }
+    
+    :root {
+        --xf-chromeBg: 0, 0%, 96%, 1;
+        --xf-chromeTextColor: 0, 0%, 20%, 1;
+        --xf-subNavTextColor: 0, 0%, 13%, 1;
+        --xf-linkColor: 0, 0%, 0%, 1;
+        --xf-textColor: 0, 0%, 0%, 1;
+        --xf-contentBg: 0, 0%, 100%, 1;
+        --xf-majorHeadingBg: 0, 0%, 96%, 1;
+        --xf-majorHeadingTextColor: hsla(218.6,12.5%,22%, 1);
+        --xf-publicHeaderAdjustColor: 0, 0%, 100%, 1;
+        --borderColor: 210, 28.57%, 97.25%, 1;
+    }
+    
+    :root, .message-body {
+        font-family: "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
+    }
+    
+    .p-body {
+        background: #ededed;
+    }
+    
+    .is-unread .structItem-title {
+        font-weight: 600;
+    }
+    .message-name {
+        font-weight: 600;
+    }
+    .node--unread .node-title {
+        font-weight: 600
+    }
+    .p-nav a {
+        font-weight: 400;
     }
 
-    .menu-header,
-    .menu-tabHeader,
-    .menu-tabHeader .tabs-tab.is-active,
-    .menu-tabHeader .tabs-tab:hover {
-        color: #ebeced !important;
-        background: #5c7099 !important;
-        border-color: #5c709900 !important;
+    #top,
+    .p-navgroup, .p-nav-list .p-navEl.is-selected,
+    .p-sectionLinks,
+    .tabs--standalone,
+    .reactionsBar, .reactionsBar .reactionSummary>li,
+    .block-footer,
+    .offCanvasMenu--nav .offCanvasMenu-linkHolder.is-selected,
+    .menu-row.menu-row--alt, .menu-footer,
+    .js-alertsMenuBody .alert.is-read,
+    .message-cell.message-cell--action {
+        background: #fff;
     }
-    .menu-tabHeader .tabs-tab {
-        color: #ebeced8a !important;
+    
+    .js-alertsMenuBody .alert.is-recently-read {
+        background: #ebebff;
+    }
+    
+    .bbCodeBlock-expandLink {
+        background: linear-gradient(to bottom, #ffffff00, #ffffff)
+    }
+    .bbCodeBlock-expandLink a {
+        font-weight: 500;
+    }
+    .p-nav-list .p-navEl.is-selected a {
+        font-weight: 700;
+    }
+
+    .p-sectionLinks {
+        border: 1px solid hsla(var(--borderColor));
+    }
+    .message-cell.message-cell--user,
+    .formRow > dt {
+        background: hsla(0, 0%, 98%, 1)
+    }
+    .block-header, .menu-tabHeader, .menu-header,
+    .block-filterBar {
+        background: hsla(var(--xf-majorHeadingBg));
+        background: hsla(0, 0%, 98%, 1)
+    }
+    a, .pairs>dt {
+        color: hsla(var(--xf-linkColor));
+    }
+    .structItem-minor a {
+        color: #606060;
+    }
+    .tabs--standalone {
+        border: 1px solid hsla(var(--borderColor));
+        color: hsla(var(--xf-linkColor));
+    }
+    .bbCodeBlock,
+    .message-attribution,
+    .reactionsBar {
+        border-top: none;
+        border-bottom: none;
+        border-right: none;
+    }
+    .p-navSticky.is-sticky {
+        box-shadow: unset;
+        border: none;
+        border-bottom: 1px solid hsla(var(--xf-borderColorLight));
+    }
+
+    .fr-box.fr-basic, .fr-box.fr-basic.is-focused,
+    .input, .input:focus, .input.is-focused {
+        background: #fff;
+    }
+    
+    .node+.node, .block-header,
+    .block-container, .block-filterBar,
+    .message-cell.message-cell--user, .block--messages .message,
+    .structItem,
+    .pageNav-page:not(:first-child), .pageNav-jump,
+    .pageNav-page:first-child {
+        border: none;
+    }
+
+    .p-pageWrapper {
+        margin-bottom: 0;
+    }
+    
+    .message-userArrow {
+        display: none;
+    }
+
+    blockquote.bbCodeBlock {
+        border: none;
+        border-radius: 10px;
+        background: #f0f0f0;
+    }
+    .bbCodeBlock-title {
+        border: none;
+        background: none;
+    }
+    a.bbCodeBlock-sourceJump {
+        font-weight: 500;
+        color: #696969;
+    }
+
+    .p-header {
+        display: none;
+        background-color: hsla(var(--xf-textColor));
+    }
+    .p-nav {
+        background-color: hsla(var(--xf-contentBg));
+    }
+    .p-nav-smallLogo {
+        display: inline-block;
+    }
+    .p-nav-smallLogo img {
+        background: no-repeat center/40px 40px url(https://voz.vn/styles/next/xenforo/voz-logo-og.png);
+        width: 0px; height: 0px;
+        padding-top: 40px; padding-left: 40px;
+    }
+
+    .pageNav-jump, .pageNav-page,
+    .pageNavSimple,
+    .pageNavSimple-el.pageNavSimple-el--prev, .pageNavSimple-el.pageNavSimple-el--next,
+    .pageNavSimple-el.pageNavSimple-el--first,
+    .pageNavSimple-el.pageNavSimple-el--last {
+        color: #000;
+        background: #fff;
+    }
+    .pageNavSimple-el {
+        border: none;
+    }
+    .pageNav-page.pageNav-page--current,
+    .pageNav-page.pageNav-page--current:hover, .pageNav-page.pageNav-page--current:active,
+    .pageNavSimple-el.pageNavSimple-el--current,
+    .pageNavSimple-el.pageNavSimple-el--current:hover, .pageNavSimple-el.pageNavSimple-el--current:active {
+        color: #fff;
+        background: #000;
+    }
+    .pageNav-jump:hover, .pageNav-jump:active {
+        color: #000;
+        background: #e3ecf7;
+    }
+    .block-outer .button, .block-outer a.button {
+        border: none;
     }
 
 @media (prefers-color-scheme: dark) {
-    html, .p-header-content, .p-pageWrapper {
-        background-color: #0000;
-    }
-    .p-nav,
-    .menu-header, .menu-tabHeader, .menu-tabHeader .tabs-tab.is-active, .menu-tabHeader .tabs-tab:hover {
-        background-color: #111 !important;
-    }
-    .block-header {
-        background: none;
-    }
+
 }
-
-
 
     .block-outer.block-outer--after {
         padding-bottom: 8px !important;
@@ -63,19 +214,6 @@
         content: "Jump..." !important;
     }
 
-    .pageNavSimple-el.pageNavSimple-el--first,
-    .pageNavSimple-el.pageNavSimple-el--last {
-        background: linear-gradient(0deg, #dce7f5, #e7ebef) !important;
-    }
-
-    .pageNavSimple-el:not(.pageNavSimple-el--current) {
-        font-size: 0px !important;
-        min-width: 0px !important;
-    }
-    .pageNavSimple-el * {
-        font-size: 0.875rem !important;
-    }
-
     .offCanvasMenu {
         transition: none !important;
     }
@@ -88,9 +226,14 @@
         display: block !important;
     }
 
+    .userBanner {
+        border: none;
+    }
+    .userBanner.userBanner--starter {
+        background: #f4deff;
+    }
     .userBanner.userBanner--green {
         background: #606676;
-        border-color: #828282;
     }
 }
 
@@ -167,17 +310,9 @@
 }
 }
 
-@-moz-document url-prefix("https://voz.vn/t/") {
-@media (min-width: 721px) {
+@-moz-document domain("voz.vn") {
     .bbImageWrapper[data-fancybox] {
         display: inline-block;
-    }
-    .bbImage, .bbImage.lazyloaded:not(:hover) {
-        max-height: 250px !important;
-        width: auto !important;
-    }
-    .bbImage[style="width: 100px"] {
-        width: 100px !important;
     }
     .bbImageWrapper[data-fancybox]:has(+ .bbImageWrapper[data-fancybox]),
     .bbImageWrapper[data-fancybox]:has(+ br + .bbImageWrapper[data-fancybox]),
@@ -194,5 +329,15 @@
     {
         display: none;
     }
-}
+    .bbImage[style="width: 100px"] {
+        width: 100px !important;
+    }
+
+/*@media (min-width: 721px) {/**/
+    .bbImage, .bbImage.lazyloaded:not(:hover) {
+        max-height: 250px !important;
+        width: auto !important;
+    }
+/*}/**/
+
 }
