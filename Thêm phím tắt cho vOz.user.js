@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Thêm phím tắt cho vOz
 // @namespace    idmresettrial
-// @version      2024.11.27.01
+// @version      2024.11.27.02
 // @description  ... dùng phím tắt đôi khi tiện hơn dùng chuột
 // @author       You
 // @match        https://voz.vn/*
@@ -101,7 +101,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
     // Trang trước, trang sau
     // phím tắt: b, n
-    if (document.querySelector(".pageNav")) {
+    if (document.querySelector(".pageNavWrapper")) {
         let pages = {
             prev: { el: document.querySelector(".pageNav-jump.pageNav-jump--prev"), key: "b" },
             next: { el: document.querySelector(".pageNav-jump.pageNav-jump--next"), key: "n" }
@@ -135,7 +135,6 @@ window.addEventListener('DOMContentLoaded', function () {
                 stickyPageNavWrapper.classList.toggle("is-sticky", false)
             }
         });
-
     }
 
     // cuộn lên đầu trang khi click nav
