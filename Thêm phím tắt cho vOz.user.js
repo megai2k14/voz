@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Thêm phím tắt cho vOz
 // @namespace    idmresettrial
-// @version      2024.11.27.02
+// @version      2024.11.27.03
 // @description  ... dùng phím tắt đôi khi tiện hơn dùng chuột
 // @author       You
 // @match        https://voz.vn/*
@@ -19,14 +19,15 @@ window.addEventListener('DOMContentLoaded', function () {
             }
             #stickyPageNavWrapper {
                 display: none;
-            }
-            #stickyPageNavWrapper.is-sticky {
-                display: block;
+                z-index: 9999;
                 position: fixed;
                 bottom: 2px;
                 padding-top: 2px;
                 padding-right: 2px;
                 background: #ededed;
+            }
+            #stickyPageNavWrapper.is-sticky {
+                display: block;
             }
 
             @media (max-width: 727px) {
