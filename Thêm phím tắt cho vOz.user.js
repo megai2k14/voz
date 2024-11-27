@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Thêm phím tắt cho vOz
 // @namespace    idmresettrial
-// @version      2024.11.16.01
+// @version      2024.11.27.01
 // @description  ... dùng phím tắt đôi khi tiện hơn dùng chuột
 // @author       You
 // @match        https://voz.vn/*
@@ -16,6 +16,17 @@ window.addEventListener('DOMContentLoaded', function () {
         <style type="text/css">
             .p-navgroup.p-mini {
                 display: none;
+            }
+            #stickyPageNavWrapper {
+                display: none;
+            }
+            #stickyPageNavWrapper.is-sticky {
+                display: block;
+                position: fixed;
+                bottom: 2px;
+                padding-top: 2px;
+                padding-right: 2px;
+                background: #ededed;
             }
 
             @media (max-width: 727px) {
@@ -101,6 +112,30 @@ window.addEventListener('DOMContentLoaded', function () {
                 link.el.setAttribute("data-xf-key", link.key);
             }
         }
+
+        // sticky nav
+        const pageNavWrappers = [...document.querySelectorAll(".pageNavWrapper")];
+        const stickyPageNavWrapper = pageNavWrappers[0].cloneNode(true);
+        stickyPageNavWrapper.setAttribute("id", "stickyPageNavWrapper");
+        pageNavWrappers[1].parentNode.appendChild(stickyPageNavWrapper);
+        function isElementInViewport (el) {
+            var rect = el.getBoundingClientRect();
+
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && /* or $(window).height() */
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth) /* or $(window).width() */
+            );
+        }
+        document.addEventListener("scroll", (e) => {
+            if (pageNavWrappers.every(el => !isElementInViewport(el)) && stickyPageNavWrapper) {
+                stickyPageNavWrapper.classList.toggle("is-sticky", true)
+            } else {
+                stickyPageNavWrapper.classList.toggle("is-sticky", false)
+            }
+        });
+
     }
 
     // cuộn lên đầu trang khi click nav
