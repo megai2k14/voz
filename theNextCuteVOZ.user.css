@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name       theNextCuteVOZ
 @namespace  idmresettrial
-@version    2024.11.28.03
+@version    2024.11.28.04
 ==/UserStyle== */
 
 @-moz-document domain("voz.vn") {
@@ -232,6 +232,21 @@
         background: #606676;
     }
 
+    /* hamburger menu */
+@media (max-width: 650px) {
+    .p-nav .p-nav-menuTrigger {
+        margin-right: 0px;
+    }
+}
+    /* logo */
+@media (min-width: 651px) {
+    .p-nav-smallLogo {
+        margin-left: max(10px, env(safe-area-inset-left));
+        padding: 0px 8px;
+        background: #3168b0;
+    }
+}
+    /* nav avatar */
     .p-navgroup-link.p-navgroup-link--user {
         padding: 0px 4px;
     }
