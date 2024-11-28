@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name       theNextCuteVOZ
 @namespace  idmresettrial
-@version    2024.11.27.01
+@version    2024.11.28.01
 ==/UserStyle== */
 
 @-moz-document domain("voz.vn") {
@@ -116,7 +116,7 @@
     .structItem,
     .pageNav-page:not(:first-child), .pageNav-jump,
     .pageNav-page:first-child {
-        border: none;
+        border: none !important;
     }
 
     .p-pageWrapper {
@@ -218,10 +218,6 @@
         transition: none !important;
     }
 
-    .bbImage.lazyloaded:not(:hover) {
-        max-height: 500px !important;
-    }
-
     .message-signature {
         display: block !important;
     }
@@ -235,6 +231,26 @@
     .userBanner.userBanner--green {
         background: #606676;
     }
+
+    .p-navgroup-link.p-navgroup-link--user {
+        padding: 0px 4px;
+    }
+    .p-navgroup-link.p-navgroup-link--user .avatar {
+        display: inline-block;
+        width: auto;
+        height: calc(1.5rem + 16px);
+    }
+    .p-navgroup-link.p-navgroup-link--user .p-navgroup-linkText {
+        padding-top: 8px;
+        padding-bottom: 8px;
+        display: inline-block;
+    } 
+@media (max-width: 900px) {
+    .p-navgroup-link.p-navgroup-link--user .p-navgroup-linkText {
+        display: none;
+    }
+}
+
 }
 
 @-moz-document regexp("https://voz.vn/(?:f|t)/.+") {
@@ -329,15 +345,10 @@
     {
         display: none;
     }
-    .bbImage[style="width: 100px"] {
-        width: 100px !important;
-    }
 
-/*@media (min-width: 721px) {/**/
-    .bbImage, .bbImage.lazyloaded:not(:hover) {
+    .bbImage:not([style="width: 100px"]) {
         max-height: 250px !important;
         width: auto !important;
     }
-/*}/**/
 
 }
