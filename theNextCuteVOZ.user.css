@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name       theNextCuteVOZ
 @namespace  idmresettrial
-@version    2024.11.28.01
+@version    2024.11.28.03
 ==/UserStyle== */
 
 @-moz-document domain("voz.vn") {
@@ -237,14 +237,20 @@
     }
     .p-navgroup-link.p-navgroup-link--user .avatar {
         display: inline-block;
+        box-sizing: border-box;
         width: auto;
         height: calc(1.5rem + 16px);
+        padding-top: 1px; padding-bottom: 1px;
     }
     .p-navgroup-link.p-navgroup-link--user .p-navgroup-linkText {
         padding-top: 8px;
         padding-bottom: 8px;
         display: inline-block;
-    } 
+    }
+    .has-js .p-nav-inner {
+        min-height: unset !important;
+    }
+
 @media (max-width: 900px) {
     .p-navgroup-link.p-navgroup-link--user .p-navgroup-linkText {
         display: none;
