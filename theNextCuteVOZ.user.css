@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name       theNextCuteVOZ
 @namespace  idmresettrial
-@version    2024.11.28.04
+@version    2024.11.30.01
 ==/UserStyle== */
 
 @-moz-document domain("voz.vn") {
@@ -22,7 +22,8 @@
         --borderColor: 210, 28.57%, 97.25%, 1;
     }
     
-    :root, .message-body {
+    :root,
+    .message-body, .fr-box.fr-basic .fr-element {
         font-family: "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
     }
     
@@ -127,16 +128,19 @@
         display: none;
     }
 
-    blockquote.bbCodeBlock {
+    blockquote.bbCodeBlock,
+    .fr-view blockquote {
         border: none;
         border-radius: 10px;
-        background: #f0f0f0;
+        background: #f5f5f5;
     }
-    .bbCodeBlock-title {
+    .bbCodeBlock-title,
+    .fr-view blockquote[data-quote]:before {
         border: none;
         background: none;
     }
-    a.bbCodeBlock-sourceJump {
+    a.bbCodeBlock-sourceJump,
+    .fr-view blockquote[data-quote]:before {
         font-weight: 500;
         color: #696969;
     }
@@ -179,6 +183,10 @@
         color: #000;
         background: #e3ecf7;
     }
+    .structItem-pageJump a {
+        background: #fff;
+    }
+
     .block-outer .button, .block-outer a.button {
         border: none;
     }
@@ -264,6 +272,10 @@
     }
     .has-js .p-nav-inner {
         min-height: unset !important;
+    }
+
+    .fr-box.fr-basic.is-focused .fr-toolbar.fr-top {
+        background: transparent;
     }
 
 @media (max-width: 900px) {
