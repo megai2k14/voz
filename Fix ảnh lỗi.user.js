@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Fix ảnh lỗi
 // @namespace    idmresettrial
-// @version      2024.08.13.01
+// @version      2024.12.01.01
 // @description  như tên
 // @author       You
 // @match        https://voz.vn/*
@@ -161,3 +161,11 @@ document.addEventListener('load', function(event) {
         'className': img.className + ' unproxied-image'
     });
 }, true);
+
+// higher res avatar on nav
+window.addEventListener('DOMContentLoaded', function() {
+    const nav_avatar = document.querySelector('.p-navgroup-link.p-navgroup-link--user .avatar img')
+    if (nav_avatar) {
+        nav_avatar.src = nav_avatar.src.replace('/s/', '/l/')
+    }
+})
