@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Fix ảnh lỗi
 // @namespace    idmresettrial
-// @version      2024.12.01.01
+// @version      2024.12.02.01
 // @description  như tên
 // @author       You
 // @match        https://voz.vn/*
@@ -155,11 +155,12 @@ document.addEventListener('load', function(event) {
     if (img.tagName != 'IMG' || img.classList.contains('unproxied-image') || img.src.indexOf('https://voz.vn/proxy.php') == -1 || img.naturalWidth > 200) {
         return;
     }
-    img.parentElement.dataset.src = img.dataset.url;
-    Object.assign(img, {
-        'src': img.dataset.url,
-        'className': img.className + ' unproxied-image'
-    });
+    const unproxied_src = img.dataset.url || (new URL(img.src)).searchParams.get('image');
+    if (unproxied_src) {
+        img.parentElement.dataset.src = unproxied_src;
+        img.src = unproxied_src;
+        img.classList.add('unproxied-image');
+    }
 }, true);
 
 // higher res avatar on nav
