@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Thêm phím tắt cho vOz
 // @namespace    idmresettrial
-// @version      2024.11.27.03
+// @version      2024.12.03.01
 // @description  ... dùng phím tắt đôi khi tiện hơn dùng chuột
 // @author       You
 // @match        https://voz.vn/*
@@ -66,7 +66,7 @@ window.addEventListener('DOMContentLoaded', function () {
     // Hiện link tới box đang xem
     // phím tắt: 3
     const currentBox = document.querySelector(".p-breadcrumbs li:last-child a");
-    if (currentBox) {
+    if (currentBox && currentBox.href !== 'https://voz.vn/') {
 
         navButtons.insertAdjacentHTML('beforeend',`
             <li><div class="p-navEl"><a href="${currentBox.href}" class="p-navEl-link" data-xf-key="3"
