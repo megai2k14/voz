@@ -1,12 +1,11 @@
 // ==UserScript==
 // @name         Fix Tiktok Live
 // @namespace    idmresettrial
-// @version      2024.09.03.01
+// @version      2025.01.22.01
 // @description  fix timezone error
 // @author       You
 // @match        https://www.tiktok.com/live*
 // @icon         https://www.tiktok.com/favicon.ico
-// @grant        none
 // @run-at       document-start
 // ==/UserScript==
 

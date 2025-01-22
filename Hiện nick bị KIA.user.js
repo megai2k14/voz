@@ -1,12 +1,11 @@
 // ==UserScript==
 // @name         Hiện nick bị KIA
 // @namespace    idmresettrial
-// @version      2024.11.25.01
+// @version      2025.01.22.01
 // @description  như tên
 // @author       You
 // @match        https://voz.vn/t/*
 // @match        https://voz.vn/direct-messages/*
-// @grant        none
 // @run-at       document-start
 // ==/UserScript==
 

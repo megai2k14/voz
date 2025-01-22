@@ -1,11 +1,10 @@
 // ==UserScript==
 // @name         Thêm phím tắt cho vOz
 // @namespace    idmresettrial
-// @version      2024.12.03.01
+// @version      2025.01.22.01
 // @description  ... dùng phím tắt đôi khi tiện hơn dùng chuột
 // @author       You
 // @match        https://voz.vn/*
-// @grant        none
 // @run-at       document-start
 // ==/UserScript==
 
