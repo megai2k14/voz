@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Thêm phím tắt cho vOz
 // @namespace    idmresettrial
-// @version      2025.02.14.01
+// @version      2025.02.14.02
 // @description  ... dùng phím tắt đôi khi tiện hơn dùng chuột
 // @author       You
 // @match        https://voz.vn/*
@@ -117,7 +117,7 @@ window.addEventListener('DOMContentLoaded', function () {
         const pageNavWrappers = [...document.querySelectorAll(".pageNavWrapper")];
         const stickyPageNavWrapper = pageNavWrappers[0].cloneNode(true);
         stickyPageNavWrapper.setAttribute("id", "stickyPageNavWrapper");
-        const jump = document.querySelector('a.button[data-xf-click="scroll-to"]');
+        const jump = document.querySelector('a.button[data-xf-click="scroll-to"]')?.cloneNode();
         if (jump) {
             stickyPageNavWrapper.querySelector(':scope > div')?.appendChild(jump);
         }
