@@ -1,12 +1,18 @@
 // ==UserScript==
 // @name         Thêm phím tắt cho vOz
 // @namespace    idmresettrial
-// @version      2025.02.16.01
+// @version      2025.08.03.01
 // @description  ... dùng phím tắt đôi khi tiện hơn dùng chuột
 // @author       You
 // @match        https://voz.vn/*
+// @match        https://data.voz.vn/avatars/*
 // @run-at       document-start
 // ==/UserScript==
+
+if (window.location.pathname.match(/avatars\/[sml]\//)) {
+  window.location.replace(window.location.href.replace(/(?<=avatars\/)[sml]\//,'o/'));
+  return;
+}
 
 window.addEventListener('DOMContentLoaded', function () {
     'use strict';
