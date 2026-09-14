@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Thêm phím tắt cho vOz
 // @namespace    idmresettrial
-// @version      2026.09.14.01
+// @version      2026.09.14.02
 // @description  ... dùng phím tắt đôi khi tiện hơn dùng chuột
 // @author       You
 // @match        https://voz.vn/*
@@ -62,7 +62,7 @@ window.addEventListener('DOMContentLoaded', function () {
 
             @media (max-width: 650px) {
               .p-nav-smallLogo {
-                display: none;
+                display: none !important;
               }
             }
         </style>
