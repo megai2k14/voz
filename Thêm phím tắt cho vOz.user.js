@@ -59,6 +59,12 @@ window.addEventListener('DOMContentLoaded', function () {
 
                 }
             }
+
+            @media (max-width: 650px) {
+              .p-nav-smallLogo {
+                display: none;
+              }
+            }
         </style>
     `);
 
